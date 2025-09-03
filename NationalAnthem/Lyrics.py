@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Lyrics of the Philippine National Anthem
 
 #Bayang Magiliw, Perlas ng Silanganan
@@ -16,10 +15,9 @@
 # Ang bituin at araw niya
 # Kailan pa ma'y di magdidilim 
 
-#
-=======
 #Lupa ng araw, ng luwalhati't pagsinta
 #Buhay ay langit sa piling mo
 #Aming ligaya na 'pag may mang-aapi
 #Ang mamatay ng dahil sa 'yo
->>>>>>> Verse5
+
+#That's all
