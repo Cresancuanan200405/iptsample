@@ -4,90 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lupang Hinirang - Philippine National Anthem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #0038A8 50%, #CE1126 50%); /* Blue top, red bottom like PH flag */
-            color: white;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(to bottom, #001f3f 50%, #800000 50%); /* High-tech navy blue to deep red gradient */
+            color: #ffffff;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Particle background for high-tech effect */
         }
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            color: black;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.5); /* Cyan neon glow */
+            z-index: 1;
+            text-align: center;
         }
         h1 {
-            text-align: center;
-            color: #FFD700; /* Yellow for flag's stars/sun */
-            background: #0038A8; /* Blue header */
-            padding: 10px;
-            border-radius: 5px;
-            margin: 0;
+            font-size: 2.5em;
+            color: #00ffff; /* Cyan neon */
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ffff; }
+            to { text-shadow: 0 0 30px #00ffff; }
         }
         .lyrics {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 1.2em;
+            line-height: 1.8;
             white-space: pre-wrap;
             max-height: 400px;
             overflow-y: auto;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
             margin: 20px 0;
+            color: #ffd700; /* Gold text for high-tech feel */
+        }
+        .lyrics p {
+            margin: 5px 0;
+            opacity: 0.6;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .lyrics p.highlight {
+            opacity: 1;
+            transform: scale(1.05);
+            color: #00ffff; /* Neon highlight */
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .play-button {
+            background: linear-gradient(45deg, #00ffff, #ffd700);
+            border: none;
+            color: #001f3f;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px #00ffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px #00ffff;
         }
         .footer {
-            text-align: center;
-            padding: 10px;
-            background: #CE1126; /* Red footer */
-            color: white;
-            position: sticky;
-            bottom: 0;
+            font-size: 0.9em;
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700;
         }
         /* Scrollbar styling */
         .lyrics::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         .lyrics::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: rgba(255, 255, 255, 0.1);
         }
         .lyrics::-webkit-scrollbar-thumb {
-            background: #FFD700; /* Yellow scrollbar */
-            border-radius: 4px;
+            background: #00ffff;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
     <div class="container">
         <h1>Lupang Hinirang</h1>
-        <div class="lyrics">
-Bayang Magiliw, Perlas ng Silanganan
-Alab ng Puso sa dibdib mo'y buhay
-Lupang Hinirang, Duyan ka ng magiting,
-Sa manlulupig di ka pasisiil.
-
-Sa dagat at bundok,
-Sa simoy at sa langit mong bughaw,
-May dilag ang tula at awit
-Sa paglayang minamahal.
-
-Ang kislap ng watawat mo'y
-Tagumapay na nagniningning 
-Ang bituin at araw niya
-Kailan pa ma'y di magdidilim 
-
-Lupa ng araw, ng luwalhati't pagsinta
-Buhay ay langit sa piling mo
-Aming ligaya na 'pag may mang-aapi
-Ang mamatay ng dahil sa 'yo
+        <button class="play-button" onclick="togglePlay()">Play</button>
+        <div class="lyrics" id="lyrics-container">
+            <p>Bayang Magiliw, Perlas ng Silanganan</p>
+            <p>Alab ng Puso sa dibdib mo'y buhay</p>
+            <p>Lupang Hinirang, Duyan ka ng magiting,</p>
+            <p>Sa manlulupig di ka pasisiil.</p>
+            <p></p>
+            <p>Sa dagat at bundok,</p>
+            <p>Sa simoy at sa langit mong bughaw,</p>
+            <p>May dilag ang tula at awit</p>
+            <p>Sa paglayang minamahal.</p>
+            <p></p>
+            <p>Ang kislap ng watawat mo'y</p>
+            <p>Tagumapay na nagniningning </p>
+            <p>Ang bituin at araw niya</p>
+            <p>Kailan pa ma'y di magdidilim </p>
+            <p></p>
+            <p>Lupa ng araw, ng luwalhati't pagsinta</p>
+            <p>Buhay ay langit sa piling mo</p>
+            <p>Aming ligaya na 'pag may mang-aapi</p>
+            <p>Ang mamatay ng dahil sa 'yo</p>
         </div>
+        <audio id="anthem" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Philippine_National_Anthem%2C_the_Lupang_Hinirang_Tenor_Solo.ogg"></audio>
         <div class="footer">Philippine National Anthem</div>
     </div>
+
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#00ffff' }, // Cyan particles for high-tech
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#ffd700', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true } },
+            retina_detect: true
+        });
+
+        const audio = document.getElementById('anthem');
+        const button = document.querySelector('.play-button');
+        const lines = document.querySelectorAll('#lyrics-container p');
+        let interval;
+        let currentLine = 0;
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                button.textContent = 'Pause';
+                highlightLines();
+            } else {
+                audio.pause();
+                button.textContent = 'Play';
+                clearInterval(interval);
+                resetHighlights();
+            }
+        }
+
+        function highlightLines() {
+            resetHighlights();
+            currentLine = 0;
+            interval = setInterval(() => {
+                if (currentLine < lines.length) {
+                    lines[currentLine].classList.add('highlight');
+                    lines[currentLine].style.animation = 'fadeIn 0.5s ease-in';
+                    currentLine++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 3500); // Approx 3.5s per line (adjust based on audio pacing)
+        }
+
+        function resetHighlights() {
+            lines.forEach(line => {
+                line.classList.remove('highlight');
+                line.style.animation = '';
+            });
+        }
+
+        audio.addEventListener('ended', () => {
+            button.textContent = 'Play';
+            clearInterval(interval);
+            resetHighlights();
+        });
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0.6; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </body>
 </html>
